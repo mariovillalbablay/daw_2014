@@ -24,6 +24,7 @@ class cabecera extends elemento
 		$str=$str."</tr></table></center>";
 		$this->setContenido($str);
 	}
+<<<<<<< HEAD
 	function setMenuGoogle($numElementos)
 	{
 		//Construyendo menu
@@ -53,6 +54,8 @@ class cabecera extends elemento
 		//Sacnadolo por pantalla
 		$this->setContenido($str);
 	}
+=======
+>>>>>>> 05e694f882ef6f1bbdec615978d763496cad7c31
 	
 }
 ?>

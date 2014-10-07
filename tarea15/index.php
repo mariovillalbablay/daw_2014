@@ -29,7 +29,11 @@
 		//tambien podemos definir los arrays con indices
 		$capitales=array("España"=>"madrid","Francia"=>"paris","Italia"=>"roma");
 		
+<<<<<<< HEAD
 		echo "La capital de España es $capitales[España]<br>";
+=======
+		echo "La capital de España es $capitales[España]";
+>>>>>>> 05e694f882ef6f1bbdec615978d763496cad7c31
 		
 		//En este caso es muy interesante el foreach
 		foreach ($capitales as $índíce => $valor) {
