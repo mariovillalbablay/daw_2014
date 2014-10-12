@@ -11,7 +11,11 @@ class pagina
 	function __construct($numFilas,$numColumnas)
 	{
 		$this->cabecera = new cabecera();
+<<<<<<< HEAD
+		$this->cabecera->setMenuGoogle(5);
+=======
 		$this->cabecera->setMenu(5);
+>>>>>>> 05e694f882ef6f1bbdec615978d763496cad7c31
 		$this->cuerpo = new cuerpo;
 		$this->cuerpo->setTabla($numFilas,$numColumnas);
 		$this->pie = new pie;
@@ -23,5 +27,9 @@ class pagina
 		echo $this->cabecera.$this->cuerpo.$this->pie;
 	}
 	
+<<<<<<< HEAD
+	
+=======
+>>>>>>> 05e694f882ef6f1bbdec615978d763496cad7c31
 }
 ?>

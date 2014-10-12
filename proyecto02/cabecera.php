@@ -24,6 +24,38 @@ class cabecera extends elemento
 		$str=$str."</tr></table></center>";
 		$this->setContenido($str);
 	}
+<<<<<<< HEAD
+	function setMenuGoogle($numElementos)
+	{
+		//Construyendo menu
+		$cssFich="<link rel=\"stylesheet\" type=\"text/css\" href=\"css/estilos.css\" media=\"screen\" />";
+		$divMenu="<div id=\"hdtb_msb\">";
+		$divMenuFin="</div>";
+		//Elemento de menu
+		$divElemento="<div class=\"hdtb_mitem hdtb_imb\">";
+		$divdivElementoFin="</div>";
+		//Elemento enlace menu
+		$aElementoinicial="<a class=\"q qs\" href=\"pagina";
+		$aElementoMedio=".php\">Pagina";
+		$aElementoFinal="</a>";
+		//Montamos el str de salida
+		$str=$cssFich.$divMenu;
+		
+		for($i=1;$i<=$numElementos;$i++)
+		{
+			$str=$str.$divElemento;
+			$str=$str.$aElementoinicial.$i;
+			$str=$str.$aElementoMedio.$i;
+			$str=$str.$aElementoFinal.$divdivElementoFin;
+		}		
+		
+		$str=$str.$divMenuFin;
+		
+		//Sacnadolo por pantalla
+		$this->setContenido($str);
+	}
+=======
+>>>>>>> 05e694f882ef6f1bbdec615978d763496cad7c31
 	
 }
 ?>
