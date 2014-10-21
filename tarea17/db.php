@@ -84,8 +84,13 @@ class db
 	*/	
 	public function getLugares(){
 		$str="";
+<<<<<<< HEAD
 		if($resultado = $this->descriptor->query("SELECT * FROM lugares LIMIT 10")){
 			$str=$str."<table border=1><tr bgcolor='#dddddd'><td>id</td><td>lugar</td><td>descripción</td><td>fecha</td></tr>";
+=======
+		if($resultado = $this->descriptor->query("SELECT * FROM lugares")){
+			$str=$str."<table border=1><tr><td>id</td><td>lugar</td><td>descripción</td><td>fecha</td></tr>";
+>>>>>>> 61513b7c1f64888d08756d6826f2f9b708c53330
 			for ($num_fila = 0; $num_fila < $resultado->num_rows; $num_fila++) {
 				$resultado->data_seek($num_fila);
 				$fila = $resultado->fetch_assoc();
@@ -98,13 +103,21 @@ class db
 			}
 			$str=$str."</table>";
 		}else{
+<<<<<<< HEAD
 			 printf("Error: %s\n", $this->descriptor->error);
+=======
+			
+>>>>>>> 61513b7c1f64888d08756d6826f2f9b708c53330
 		}
 		return $str;
 	}
 	
 	public function setLugar($lugar,$descripcion,$fecha){
+<<<<<<< HEAD
 		if($resultado = $this->descriptor->query("INSERT INT lugares (nombre,descripcion,fecha) VALUES ('$lugar','$descripcion','$fecha')")){
+=======
+		if($resultado = $this->descriptor->query("INSERT INTO lugares (nombre,descripcion,fecha) VALUES ('$lugar','$descripcion','$fecha')")){
+>>>>>>> 61513b7c1f64888d08756d6826f2f9b708c53330
 			echo "OK<br>";
 		}else{
 			echo "ERROR<br>";
