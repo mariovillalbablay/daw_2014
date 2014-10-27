@@ -8,11 +8,12 @@
 <title>Untitled Document</title>
 </head>
 	<?php
+		$lugares=array();
 		$db=new db("root","daw01");
 		$db->conectar_base_datos();
 		echo $db->getInfo();
 		echo "</br>";
-		$db->setLugar("MAdrid2","Excursión a las playas de Madrid, cuando el mundo explote","2014-10-12");
+		$db->setLugar("Madrid2","Excursión a las playas de Madrid, cuando el mundo explote","2014-10-12");
 		echo $db->getLugares();
 	?>
 <body>
