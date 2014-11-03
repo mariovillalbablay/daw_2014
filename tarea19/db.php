@@ -32,6 +32,10 @@ class db
 	*/
 	private $descriptor;
 	/**
+	* descriptor a la conexión con la base de datos
+	*/
+	private $sentenciaPreparada;
+	/**
 	* boolean que nos indica si ha habido exito al conectar o no
 	*/
 	private $conectado;
@@ -114,6 +118,22 @@ class db
 		}else{
 			echo "ERROR<br>";
 			 printf("Error: %s\n", $this->descriptor->error);
+		}
+	}
+	
+	public function prepararLugar(){
+		/* Sentencia preparada, etapa 1: preparación */
+		if (!($this->sentenciaPreparada = $this->descriptor->prepare("INSERT INTO lugares (nombre,descripcion,fecha) VALUES (?,?,?)"))) {
+   			echo "Falló la preparación: (" . $this->descriptor->errno . ") " . $this->descriptor->error;
+		}
+	}
+	public function setLugarPrep($lugar,$descripcion,$fecha){
+		if (!$this->sentenciaPreparada->bind_param('sss', $lugar, $descripcion, $fecha))
+		{
+			echo "Falló la vinculación de parámetros: (" . !$this->sentenciaPreparada->errno . ") " . $this->sentenciaPreparada->error;
+		}
+		if (!$this->sentenciaPreparada->execute()){
+			echo "Falló la ejecución: (" . $this->sentenciaPreparada->errno . ") " . $this->sentenciaPreparada->error;
 		}
 	}
 }

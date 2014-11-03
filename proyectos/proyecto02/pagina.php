@@ -8,20 +8,21 @@ class pagina
 	public $titulo="TITULO DE LA PAGINA";
 	private $cabecera,$cuerpo,$pie;
 	
-	function __construct()
+	function __construct($numFilas,$numColumnas)
 	{
 		$this->cabecera = new cabecera();
-		$this->cabecera->setMenu(3);
+		$this->cabecera->setMenuGoogle(5);
 		$this->cuerpo = new cuerpo;
-		$this->cuerpo->setTabla(3,4);
+		$this->cuerpo->setTabla($numFilas,$numColumnas);
 		$this->pie = new pie;
 		$this->pie->setPie();
 	}
 	
 	function getPagina()
 	{
-		return $this->cabecera.$this->cuerpo.$this->pie;
+		echo $this->cabecera.$this->cuerpo.$this->pie;
 	}
+	
 	
 }
 ?>

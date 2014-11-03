@@ -10,7 +10,7 @@
 </head>
 <?php
 	$pagina = new pagina() ;
-	$pagina->getPagina();
+	$imprimir_pag=$pagina->getPagina();
 ?>
 
 <body>
