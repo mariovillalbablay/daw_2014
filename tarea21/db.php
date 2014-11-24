@@ -45,7 +45,6 @@ class db
 	private $info;
 	function __construct()
 	{
-		echo "Numero de argumentos: ".func_num_args();
 		if(func_num_args()==1){
 			$this->usuario = func_get_arg(0);
 			$this->conectado=false;
