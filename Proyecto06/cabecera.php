@@ -1,7 +1,7 @@
 <?php
 require_once "elemento.php";
-
-
+	
+	
 class cabecera extends elemento
 {
 	//Se crea el array con los elementos del array
@@ -55,7 +55,8 @@ class cabecera extends elemento
 if (isset($_SESSION['autentificado'])){
 
 //En caso de que no haya haya sesion o no se haya identificado correcamente seguira apareciendo el menu superior para logearse
-if ($_SESSION["autentificado"] != "SI") {
+
+if ($_SESSION["autentificado"] != "SI" ) {
     $menu=$menu." </div>
         <div id='navbar' class='navbar-collapse collapse'>
           <form class='navbar-form navbar-right' role='form' action='control.php' method='POST'>
@@ -74,9 +75,11 @@ if ($_SESSION["autentificado"] != "SI") {
 }
 
 
+
+
 //Si el usuaro esta logeado se quitara la opcion de logearse y se pondra unicamente el boton para cerrar sesion
 if ($_SESSION["autentificado"] == "SI") {
-    $menu=$menu." </div>
+    $menu=$menu."<a class='navbar-brand' href='index.php?id=5'>Perfil</a> </div>
         <div id='navbar' class='navbar-collapse collapse'>
           <form class='navbar-form navbar-right' role='form' action='salir.php' method='POST'>
     
@@ -95,7 +98,7 @@ else{   $menu=$menu." </div>
               <input name='usuario' type='text' placeholder='Email' class='form-control'>
             </div>
             <div class='form-group'>
-              <input name='contrasena' type='password' placeholder='Password' class='form-control'>
+              <input name='contrasena' type='password' placeholder='Password9' class='form-control'>
             </div>
             <button type='submit' class='btn btn-success'>Sign in</button>
           </form>

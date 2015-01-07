@@ -2,6 +2,17 @@
 		require "pagina.php";
 		require_once "db.php";
 		session_start();
+		
+		if(isset($_GET["errorusuario"])){
+			if($_GET["errorusuario"]=="si")
+			{
+				if(!isset($_COOKIE["errores"])){
+					setcookie("errores",2,time()+30);
+				}else{
+					setcookie("errores",$_COOKIE["errores"]+1,time()+30);
+				}
+			}
+		}
 	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,12 +41,7 @@
 
 <?php
 	//En caso de que el usuario se autentifique mal saldra una cabezera informandole
-	if(isset($_GET["errorusuario"])){
-			if($_GET["errorusuario"]=="si")
-			{
-				echo "<h3 color='#aa0000'>Usuario y contraseña erroneos. Dale otra oportunidad</h3>";
-			}
-		}
+	
 	
 	//Dependiendo el id mandado por la url se escribira una pagina u otra
 	if (isset($_GET["id"])){
@@ -52,6 +58,36 @@
 		//pagina de contacto
 		case 3:
 		$pagina = new pagina(0,0,"<div id='cont'><h1>Contacto</h1></br><a href='mailto:mariovlbay@gmail.com'>Enviar email</a></div>","");break;
+		
+		
+		case 4:
+		if(isset($_GET["errorusuario"])){
+			if($_GET["errorusuario"]=="si")
+			{
+				if(!isset($_COOKIE["errores"])){
+					
+					$pagina = new pagina(0,0,"<h3 color='#aa0000'>Usuario y contraseña erroneos. Te has equivocado 1 vez </h3>","");}
+				else{	
+				if($_COOKIE["errores"]>3){$pagina = new pagina(0,0,"<h3 color='#aa0000'>Te has equivocado 4 veces, Tendrás que esperar 30 segundos </h3>","");
+					?>
+						<style type="text/css">.navbar-form.navbar-right {
+							display: none;}
+                        </style>
+                        <?php }
+				
+				else{$pagina = new pagina(0,0,"<h3 color='#aa0000'>Usuario y contraseña erroneos. Te has equivocado ".$_COOKIE["errores"]." veces </h3>","");}}
+				
+			}
+		}
+		;break;
+		
+		case 5:
+		$pagina = new pagina(0,0,"<div id='cont'><h1>Perfil</h1><h2>Foto</h2><img  width='200px' height='200px' src='sin.jpg'></img></br><h2>Cambiar Foto</h2><form class='form-signin' role='form' 				 action='up.php' method='post' enctype='multipart/form-data'>
+        <input  type='file' name='archivo' id='archivo'></input></br>
+		 Nombre:<input name='nombre' type='text' placeholder='Paco' readonly = 'readonly'></br>
+		 Apellidos:<input name='apellidos' type='text' placeholder='Gomez Arnal' readonly = 'readonly'></br></br>
+        <button  type='submit'>Enviar</button>
+      </form></div>","");break;
 		
 		default:$pagina = new pagina(0,0,"<div id='cont'><h1>Inicio</h1></br>Estas en la pagina de Inicio</div>","");
 		}
