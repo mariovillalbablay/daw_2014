@@ -29,7 +29,7 @@
 <body>
 
 <?php
-
+	//En caso de que el usuario se autentifique mal saldra una cabezera informandole
 	if(isset($_GET["errorusuario"])){
 			if($_GET["errorusuario"]=="si")
 			{
@@ -37,20 +37,26 @@
 			}
 		}
 	
+	//Dependiendo el id mandado por la url se escribira una pagina u otra
 	if (isset($_GET["id"])){
 		switch($_GET["id"]){
+		
+		//Index o pagina principal
 		case 1:
 		$pagina = new pagina(0,0,"<div id='cont'><h1>Inicio</h1></br>Estas en la pagina de Inicio</div>","");break;
+		
+		//En caso de que no este autentificado y si el usuario intenta entrar en la seccion de lugares
 		case 2:$pagina = new pagina(0,0,"<div id='cont'><h1>Restringido</h1></br>Inicia sesion para ver esta seccion</div>","");break;
 		break;
 		
+		//pagina de contacto
 		case 3:
 		$pagina = new pagina(0,0,"<div id='cont'><h1>Contacto</h1></br><a href='mailto:mariovlbay@gmail.com'>Enviar email</a></div>","");break;
 		
 		default:$pagina = new pagina(0,0,"<div id='cont'><h1>Inicio</h1></br>Estas en la pagina de Inicio</div>","");
 		}
 		
-	   
+	 //En caso de que sea la primera vez que se accede a la pagina se mostrara el inicio  
 	}else{
 		$pagina = new pagina(0,0,"<div id='cont'><h1>Inicio</h1></br>Estas en la pagina de Inicio</div>","");
 		}

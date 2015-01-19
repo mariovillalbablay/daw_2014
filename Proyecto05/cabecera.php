@@ -4,7 +4,7 @@ require_once "elemento.php";
 
 class cabecera extends elemento
 {
-	
+	//Se crea el array con los elementos del array
 	private $menu=array(
 		"home"=>array(
 				"txt"=>"Inicio",
@@ -45,15 +45,16 @@ class cabecera extends elemento
             <span class='icon-bar'></span>
           </button>";
          
-      
+      	//Recorremos el array del menu y escribimos los elementos en el menu
 		foreach($this->menu as $elementos)
 		{
 			$menu=$menu."<a  class='navbar-brand' href=".$elementos["url"].">".$elementos["txt"]."</a>";}
 		//Inicio la sesión
 
-//COMPRUEBA QUE EL USUARIO ESTA AUTENTIFICADO
+//Comprobamos si existe una variable sesion
 if (isset($_SESSION['autentificado'])){
 
+//En caso de que no haya haya sesion o no se haya identificado correcamente seguira apareciendo el menu superior para logearse
 if ($_SESSION["autentificado"] != "SI") {
     $menu=$menu." </div>
         <div id='navbar' class='navbar-collapse collapse'>
@@ -73,7 +74,7 @@ if ($_SESSION["autentificado"] != "SI") {
 }
 
 
-//COMPRUEBA QUE EL USUARIO ESTA AUTENTIFICADO
+//Si el usuaro esta logeado se quitara la opcion de logearse y se pondra unicamente el boton para cerrar sesion
 if ($_SESSION["autentificado"] == "SI") {
     $menu=$menu." </div>
         <div id='navbar' class='navbar-collapse collapse'>
@@ -101,6 +102,8 @@ else{   $menu=$menu." </div>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>";}	
+	
+	//Una vez seleccionado el menu que se mostrara lo incrustamos en la pagina
 	$this->setContenido($menu);
 	}
 }

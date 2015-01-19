@@ -1,0 +1,34 @@
+/* CSS Document */
+ul, ol, dl, dt, dd {
+padding: 0;
+margin: 0;
+}
+
+.menu {
+border-top: 1px solid #919191;
+background: #f3f3f3;
+position: static;
+list-style: none;
+}
+.menu .nav {
+display: inline-block;
+list-style: none;
+}
+
+.menu .nav li {
+display: inline;
+float: left;
+}
+
+.menu .nav li a {
+display: block;
+font-size: 11px;
+line-height: 15px;
+font-weight: 900;
+padding: 8px 11px 7px;
+color: #484848;
+text-transform: uppercase;
+text-decoration: none;
+outline: none;
+}
+
